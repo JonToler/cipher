@@ -19,7 +19,7 @@ function cipher_menu() {
   return $items;
 }
 
-function caesarean_shift_cipher_form(){
+function caesarean_cipher_form(){
   $form['shift_value'] = array(
     '#title' => 'shift value',
     '#type' => 'textfield',
@@ -50,6 +50,11 @@ function caesarean_shift_cipher_form(){
   return $form;
   }
 
-  function caesarean_cipher_form_submit($form, &$form_state){
-
-  }
+  // function caesarean_cipher_form_submit($form, &$form_state){
+  //   $shift_value = $_SESSION['shift_value'] = $form_state['values']['shift_vlaue'];
+  //   $direction = $_SESSION['direction'] = $form_state['values']['direction'];
+  //   $phrase = $_SESSION['phrase'] = $form_state['values']['phrase'];
+  //
+  //   $_SESSION['encrypted_phrase'] =
+  //
+  // }
