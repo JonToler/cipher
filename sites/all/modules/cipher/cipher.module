@@ -19,4 +19,37 @@ function cipher_menu() {
   return $items;
 }
 
-function output_cipher
+function caesarean_shift_cipher_form(){
+  $form['shift_value'] = array(
+    '#title' => 'shift value',
+    '#type' => 'textfield',
+    '#element_validate' =>
+    array('element_validate_int_positive'),
+      '#description' => t('Please enter by how spaces to shift each letter'),
+  );
+
+  $form['direction'] = array(
+    '#title' => 'direction',
+    '#type' => 'textfield',
+    '#element_validate' => array('element_validate_proper_direction'),
+    '#description' => t('Please choose in a direction, either left or right in-which to shift the letters.'),
+  );
+
+  $form['phrase'] = array(
+    '#title' => 'phrase',
+    '#type' => 'textfield',
+    '#element_validate' => array('element_validate_proper_phrase'),
+    '#description' => t('Please a phrase to encrypt'),
+  );
+
+  $form['submit'] = array(
+    '#value' => 'Encrypt now!',
+    '#type' => 'submit',
+  );
+
+  return $form;
+  }
+
+  function caesarean_cipher_form_submit($form, &$form_state){
+
+  }
