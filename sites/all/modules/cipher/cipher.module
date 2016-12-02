@@ -2,37 +2,35 @@
 
 
 function cipher_menu() {
-  $items = array();
-  $items['caesarean_cipher'] = array(
+  $items['cipher'] = array(
     'title' => 'Caesarean cipher',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('caesarean_cipher_form'),
+    'page arguments' => array('cipher_form'),
     'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
   );
-  $items['caesarean_cipher_success'] = array(
+  $items['cipher_success_page'] = array(
     'title' => 'Encoded',
-    'page callback' => 'caesarean_cipher_success',
+    'page callback' => 'cipher_success',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
   return $items;
 }
 
-function caesarean_cipher_form(){
+function cipher_form(){
   $form['shift_value'] = array(
     '#title' => 'shift value',
     '#type' => 'textfield',
-    '#element_validate' =>
-    array('element_validate_int_positive'),
-      '#description' => t('Please enter by how spaces to shift each letter'),
+    '#element_validate' => array('element_validate_integer_positive'),
+    '#description' => t('Please enter by how spaces to shift each letter'),
   );
 
   $form['direction'] = array(
     '#title' => 'direction',
     '#type' => 'textfield',
     '#element_validate' => array('element_validate_proper_direction'),
-    '#description' => t('Please choose in a direction, either left or right in-which to shift the letters.'),
+    '#description' => t('Please choose in-which direction, either left or right, to shift the letters.'),
   );
 
   $form['phrase'] = array(
@@ -50,11 +48,58 @@ function caesarean_cipher_form(){
   return $form;
   }
 
-  // function caesarean_cipher_form_submit($form, &$form_state){
-  //   $shift_value = $_SESSION['shift_value'] = $form_state['values']['shift_vlaue'];
-  //   $direction = $_SESSION['direction'] = $form_state['values']['direction'];
-  //   $phrase = $_SESSION['phrase'] = $form_state['values']['phrase'];
+  function cipher_form_submit($form, &$form_state){
+
+    // $shift_value = $_SESSION['shift_value'] = $form_state['values']['shift_vlaue'];
+    // $direction = $_SESSION['direction'] = $form_state['values']['direction'];
+    // $phrase = $_SESSION['phrase'] = $form_state['values']['phrase'];
+    // $_SESSION['encrypted_phrase'] = encrypt($shift_value, $direction, $phrase);
+    $form_state['redirect'] = 'cipher_success_page';
+  }
+
+  function cipher_success(){
+    return '<p>This is your encrypted phrase:'. $_SESSION['encrypted_phrase'] . '</p>';
+  }
+
+  // function element_validate_proper_phrase($element) {
+  //   $phrase = $element['#value'];
+  //   $element_title = $element['#title'];
+  //   $chars = str_split($phrase);
   //
-  //   $_SESSION['encrypted_phrase'] =
+  //   foreach ($chars as $char) {
+  //     if (!(ctype_alpha($char) || ctype_space($char) || ctype_punct($char))) {
+  //       form_error($element, t("$element_title must contain only letters, spaces, and punctuation marks"));
+  //     }
+  //   }
+  // }
   //
+  // function encrypt($shift_value, $direction, $phrase) {
+  //   if ($direction == 'left') {
+  //     $shift_value *= -1;
+  //   }
+  //
+  //   $phrase = strtolower($phrase); //sets to lowercase
+  //   $chars = str_split($phrase); //splits chars
+  //   $encrypted_phrase = '';
+  //
+  //   foreach ($chars as $char) {
+  //     $ascii = ord($char); //ord returns the ASCII char
+  //     $encrypted_phrase .= ctype_alpha($char) ? shift($ascii, $shift_value) : $char; //checks if is alphabetic chars
+  //   }
+  //
+  //   return $encrypted_phrase;
+  // }
+  //
+  // function shift($ascii, $shift_value) {
+  //   $new_value = $ascii + $shift_value;
+  //
+  //   while ($new_value < 97) {
+  //     $new_value = 123 - (97 - $new_value);
+  //   }
+  //
+  //   while ($new_value > 122) {
+  //     $new_value = 96 + ($new_value - 122);
+  //   }
+  //
+  //   return chr($new_value);//returns the char assocaited with the new ASCII value
   // }
