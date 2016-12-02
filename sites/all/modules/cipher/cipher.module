@@ -1,0 +1,22 @@
+<?php
+
+
+function cipher_menu() {
+  $items = array();
+  $items['caesarean_cipher'] = array(
+    'title' => 'Caesarean cipher',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('caesarean_cipher_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['caesarean_cipher_success'] = array(
+    'title' => 'Encoded',
+    'page callback' => 'caesarean_cipher_success',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function output_cipher

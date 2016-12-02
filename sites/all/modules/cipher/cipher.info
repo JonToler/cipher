@@ -1,0 +1,5 @@
+name = Cipher
+description = A module using Caesarean cipher
+package = Epicodus Examples
+core = 7.x
+files[] = cipher.module
