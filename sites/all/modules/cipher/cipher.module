@@ -1,6 +1,5 @@
 <?php
 
-
 function cipher_menu() {
   $items['cipher'] = array(
     'title' => 'Caesarean cipher',
@@ -23,18 +22,21 @@ function cipher_form(){
     '#title' => 'shift value',
     '#type' => 'textfield',
     '#description' => t('Please enter by how spaces to shift each letter'),
+    '#required' => TRUE,
   );
 
   $form['direction'] = array(
     '#title' => 'direction',
     '#type' => 'textfield',
     '#description' => t('Please choose in-which direction, either left or right, to shift the letters.'),
+    '#required' => TRUE,
   );
 
   $form['phrase'] = array(
     '#title' => 'phrase',
     '#type' => 'textfield',
     '#description' => t('Please a phrase to encrypt'),
+    '#required' => TRUE,
   );
 
   $form['submit'] = array(
