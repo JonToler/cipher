@@ -69,7 +69,7 @@ function cipher_form(){
     $shift = fmod(($direction == "right" ? $shift : -$shift), 26);
     $position_orig = stripos($alpha, strtolower($input_letter));
     $position_new = $position_orig + $shift;
-    if ($position_new > 26) {
+    if ($position_new > 26) { //look-up php modulus built in or function call? 
         $position_new -= 26;
     } elseif ($position_new < 1) {
         $position_new += 26;
