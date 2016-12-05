@@ -30,7 +30,6 @@ function cipher_form(){
     '#title' => 'direction',
     '#type' => 'textfield',
     '#description' => t('Please choose in-which direction, either left or right, to shift the letters.'),
-    // '#attributes' => array('placeholder') => t('Right or Left'),
     '#required' => TRUE,
 
   );
@@ -40,7 +39,6 @@ function cipher_form(){
     '#type' => 'textfield',
     '#description' => t('Please a phrase to encrypt'),
     '#required' => TRUE,
-    // '#attributes' => array('placeholder') => t('letters, spaces, punctuation'),
   );
 
   $form['submit'] = array(
