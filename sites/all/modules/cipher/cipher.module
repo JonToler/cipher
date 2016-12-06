@@ -39,7 +39,7 @@ function cipher_form(){
   $form['phrase'] = array(
     '#title' => 'phrase',
     '#type' => 'textfield',
-    '#description' => t('Please a phrase to encrypt'),
+    '#description' => t('Please enter a phrase to encrypt'),
     '#required' => TRUE,
   );
 
@@ -97,8 +97,8 @@ function cipher_form(){
     $direction = $_SESSION['cipher_direction'];
     $phrase = $_SESSION['cipher_phrase'];
     $answer = $_SESSION['cipher_output'];
-    $display_result = 'encrypted your phrase, <br>';
-    $display_result .= '<strong>' . $phrase . '</strong><br> by shifting ' . $shift_value . ' to the ' . $direction . ' with the following result:<br>';
+    $display_result = 'Encrypting the phrase: <br>';
+    $display_result .= '<strong>' . $phrase . '</strong><br> by shifting ' . $shift_value . ' to the ' . $direction . ' results in the following encrypted phrase:<br>';
     $display_result .= '<strong>' . $answer . '</strong>';
     return $display_result;
   }
