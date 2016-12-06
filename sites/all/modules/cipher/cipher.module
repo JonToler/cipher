@@ -22,6 +22,7 @@ function cipher_form(){
     '#title' => 'shift value',
     '#type' => 'textfield',
     '#description' => t('Please enter by how spaces to shift each letter'),
+    '#element_validate' => array('element_validate_integer_positive'),
     '#required' => TRUE,
 
   );
@@ -30,6 +31,7 @@ function cipher_form(){
     '#title' => 'direction',
     '#type' => 'textfield',
     '#description' => t('Please choose in-which direction, either left or right, to shift the letters.'),
+    '#element_validate' => array('element_validate_direction'),
     '#required' => TRUE,
 
   );
@@ -47,6 +49,12 @@ function cipher_form(){
   );
 
   return $form;
+  }
+
+  function element_validate_direction($element) {
+    if (!($element ['#value'] == "left" || $element['#value'] == "right")) {
+        form_error($element, t('Its cases sensitive, so please only eneter in "left" or "right" for the direction.'));
+    }
   }
 
   function cipher_phrase($input_phrase, $shift, $direction) {
