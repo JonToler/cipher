@@ -59,8 +59,8 @@ function cipher_form(){
   }
 
   function element_validate_phrase($element){
-    if (preg_match("/[0-9\\\\~@#$%^&\*()_+={}|<>\/\`]/", $element['#value'])) {
-        form_error($element, t('The only special characters that are allowed in your input phrase are spaces and punctuation.'));
+    if (preg_match("/[0-9\~@#$%^&\*()_+={}|<>\/\`]/", $element['#value'])) {
+        form_error($element, t('Only letters, spaces, and punctuation are allowed in the phrase.'));
       }
     }
 
