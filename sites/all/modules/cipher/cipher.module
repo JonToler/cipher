@@ -40,6 +40,7 @@ function cipher_form(){
     '#title' => 'phrase',
     '#type' => 'textfield',
     '#description' => t('Please enter a phrase to encrypt'),
+    '#element_validate' => array('element_validate_phrase'),
     '#required' => TRUE,
   );
 
@@ -56,6 +57,12 @@ function cipher_form(){
         form_error($element, t('Its cases sensitive, so please only eneter in "left" or "right" for the direction.'));
     }
   }
+
+  function element_validate_phrase($element){
+    if (preg_match("/[0-9\\\\~@#$%^&\*()_+={}|<>\/\`]/", $element['#value'])) {
+        form_error($element, t('The only special characters that are allowed in your input phrase are spaces and punctuation.'));
+      }
+    }
 
   function cipher_phrase($input_phrase, $shift, $direction) {
       $input_array = str_split($input_phrase);
