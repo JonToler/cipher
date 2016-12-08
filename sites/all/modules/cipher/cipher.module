@@ -75,6 +75,8 @@ function cipher_form(){
           }
       }
       return join("", $output_array);
+
+
     }
 
   function cipher_letter($input_letter, $shift, $direction) {
@@ -105,7 +107,9 @@ function cipher_form(){
     $phrase = $_SESSION['cipher_phrase'];
     $answer = $_SESSION['cipher_output'];
     $display_result = 'Encrypting the phrase: <br>';
-    $display_result .= '<strong>' . $phrase . '</strong><br> by shifting ' . $shift_value . ' to the ' . $direction . ' results in the following encrypted phrase:<br>';
-    $display_result .= '<strong>' . $answer . '</strong>';
+    $display_result .= '<pre>'. $phrase .'</pre><br> by shifting ' . $shift_value . ' to the ' . $direction . ' results in the following encrypted phrase:<br>';
+    $display_result .= '<pre>' . $answer . '</pre>';
+    echo "<pre>" . var_dump($answer) . "</pre>";
+    var_dump ($phrase);
     return $display_result;
   }
